@@ -14,3 +14,7 @@ class Solution:
             best = max(best, end[j][2]+value[e])
         
         return best
+
+    
+    # It took like 120 minutes
+    # 1 submission
