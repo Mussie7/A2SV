@@ -4,8 +4,8 @@ class Solution:
         for i in range(len(order)):
             dic[order[i]] = i+1
         
-        cur = r = 0
-        while r < len(words):
+        cur = 0
+        for r in range(len(words)):
             if dic[words[r][0]] < cur:
                 return
             
@@ -19,6 +19,5 @@ class Solution:
                         break
 
             cur = dic[words[r][0]]                
-            r += 1
         
         return True
