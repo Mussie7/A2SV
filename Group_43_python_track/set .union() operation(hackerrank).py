@@ -1,0 +1,5 @@
+english = int(input())
+englishSet = set(input().split())
+french = int(input())
+frenchSet = set(input().split())
+print(len(englishSet.union(frenchSet)))
