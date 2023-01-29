@@ -4,38 +4,20 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def removeNode(self, node):
-        removed = node.next
-        node.next = node.next.next
-        
-        return removed
-    
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
-        if not head:
-            return
+        head = ListNode(-101, head)
+        left = right = head
         
-        if head.val < x:
-            left = head
-            while left.next:
-                if left.next.val >= x:
-                    break
-                
-                left = left.next
-        else:
-            left = ListNode(-101, head)
-        
-        right = left
         while right and right.next:
-            if right.next.val < x:
-                cutout = self.removeNode(right)
+            if right.next.val < x and right.val >= x:
+                cutout, right.next = right.next, right.next.next
 
-                if left.val == -101:
-                    left.val = cutout.val
-                    head = left
-                else:
-                    left.next, cutout.next = cutout, left.next
-                    left = left.next
+                left.next, cutout.next = cutout, left.next
+                left = left.next
             else:
                 right = right.next
+            
+            if left.next.val < x:
+                left = left.next
         
-        return head
+        return head.next
