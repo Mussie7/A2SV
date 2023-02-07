@@ -1,3 +1,5 @@
+# O(n) time and O(1) space complexity
+
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
