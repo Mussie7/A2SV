@@ -8,18 +8,12 @@ for _ in range(m):
     counter[input()] += 1
 
 toys = list(counter.values())
-
-toys.sort()
+toys.sort(reverse=True)
 arr.sort()
 
-toyPointer = len(toys)-1
 minCost = maxCost = 0
-for i in range(n):
-    if toyPointer < 0:
-        break
-    
-    minCost += toys[toyPointer] * arr[i]
-    maxCost += toys[toyPointer] * arr[n-i-1]
-    toyPointer -= 1
+for i in range(len(toys)):
+    minCost += toys[i] * arr[i]
+    maxCost += toys[i] * arr[n-i-1]
 
 print(minCost, maxCost)
