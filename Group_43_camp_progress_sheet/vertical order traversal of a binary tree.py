@@ -19,7 +19,6 @@ class Solution:
 
         columnOrder = []
         for key in sorted(self.columns.keys()):
-            self.columns[key].sort(key = lambda x: x[1])
             self.columns[key].sort()
             columnOrder.append([val for row, val in self.columns[key]])
         
