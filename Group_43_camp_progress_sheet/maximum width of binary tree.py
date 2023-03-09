@@ -1,9 +1,4 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+# iterative
 class Solution:
     def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         que = deque([[root, 1]])
@@ -22,3 +17,23 @@ class Solution:
             que = deque(cur_level)
         
         return max_width
+
+# recursive
+class Solution:
+    def dfs(self, node, level, num):
+        if not node:
+            return
+
+        if level in self.levelDict:
+            self.max_width = max(self.max_width, num - self.levelDict[level] + 1)
+        else:
+            self.levelDict[level] = num
+        
+        self.dfs(node.left, level+1, num * 2 - 1)
+        self.dfs(node.right, level+1, num * 2)
+
+    def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        self.levelDict = {}
+        self.max_width = 1
+        self.dfs(root, 1, 1)
+        return self.max_width
