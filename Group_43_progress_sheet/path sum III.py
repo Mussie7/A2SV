@@ -16,7 +16,6 @@ class Solution:
         cur += self.dfs(node.left, preSum, target) + self.dfs(node.right, preSum, target)
 
         self.preSumDic[preSum] -= 1
-        preSum -= node.val
 
         return cur
 
