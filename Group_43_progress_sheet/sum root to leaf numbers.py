@@ -8,15 +8,15 @@ class Solution:
     def getRootLeafNums(self, path, node):
         path += str(node.val)
         if not node.left and not node.right:
-            self.totalOfNums += int(path)
+            return int(path)
         
-        if node.left:
-            self.getRootLeafNums(path, node.left)
+        if not node.left:
+            return self.getRootLeafNums(path, node.right)
 
-        if node.right:
-            self.getRootLeafNums(path, node.right)
+        if not node.right:
+            return self.getRootLeafNums(path, node.left)
+        
+        return self.getRootLeafNums(path, node.left) + self.getRootLeafNums(path, node.right)
 
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        self.totalOfNums = 0
-        self.getRootLeafNums('', root)
-        return self.totalOfNums
+        return self.getRootLeafNums('', root)
