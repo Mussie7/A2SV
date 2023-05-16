@@ -3,7 +3,7 @@ from typing import List
 import collections
 
 class Solution:
-    def minimumTime(self, n : int,m : int, edges : List[List[int]]) -> int:
+    def minimumTime(self, n : int,m : int, edges : List[List[int]]) -> str:
         graph = collections.defaultdict(list)
         pre_count = [0] * (n + 1)
         for parent, child in edges:
