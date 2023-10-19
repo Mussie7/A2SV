@@ -20,3 +20,20 @@ class Solution:
             dp = new_dp
 
         return False
+
+
+
+    # top-down approach
+    def canPartition(self, nums: List[int]) -> bool:
+        @cache
+        def dp(index, curr_sum):
+            if index == len(nums) or curr_sum > arr_total // 2:
+                return False
+
+            if curr_sum == arr_total // 2:
+                return True
+            return dp(index + 1, curr_sum) or dp(index + 1, curr_sum + nums[index])
+        
+        n = len(nums)
+        arr_total = sum(nums)
+        return arr_total % 2 == 0 and dp(0, 0)
